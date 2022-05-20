@@ -1,5 +1,5 @@
 const { Permissions, MessageEmbed } = require("discord.js");
-const db = require("quick.db");
+const warns = require("quick.db")
 
 let wrong = "#F04A47";
 
@@ -71,9 +71,9 @@ module.exports = {
           embeds: [embed],
         });
       }
-      db.add(`warns_${message.guild.id}_${target.id}`, 1);
-      var x = db.get(`warns_$${target.id}`);
-      var threewarn = db.get(`${message.guild.id}.3warn`);
+      warns.add(`warns_${message.guild.id}_${target.id}`, 1);
+      var x = warns.get(`warns_$${target.id}`);
+      var threewarn = warns.get(`${message.guild.id}.3warn`);
       if (threewarn === 0 && x >= 3) {
         target.ban()
         return message.channel.send({
