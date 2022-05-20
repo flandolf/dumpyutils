@@ -27,13 +27,21 @@ module.exports = {
       return role.name === roleName
     })
     if (!role) {
-      message.reply(`There is no role with the name "${roleName}"`)
-      return
+      return message.channel.send({embeds: [{
+        color: embedError,
+        title: 'Role not found',
+        description: 'Please specify a valid role.'
+      }]})
+      
     }
 
     const member = guild.members.cache.get(targetUser.id)
     member.roles.add(role)
 
-    message.reply(`That user now has the "${roleName}" role`)
+    message.reply({embeds:[{
+      color: embedColor,
+      title: 'Role given',
+      description: `${targetUser} has been given the role ${roleName}`
+    }]})
   },
 }

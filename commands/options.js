@@ -4,7 +4,7 @@ const db = require("quick.db");
 module.exports = {
   name: "options",
   description: "Options command",
-  aliases: [],
+  aliases: ["opt"],
   usage: "",
   guildOnly: false,
   args: false,
@@ -17,7 +17,7 @@ module.exports = {
       return message.channel.send({
         embeds: [
           {
-            color: "#F04A47",
+            color: "#34eb43",
             title: "Options",
             description: "This is a list of options for the bot! \n `3warn`",
           },
@@ -47,7 +47,7 @@ module.exports = {
               return message.channel.send({
                 embeds: [
                   {
-                    color: "#F04A47",
+                    color: "#34eb43",
                     title: "3 Warn",
                     description: "You have set the 3 warn to kick",
                   },
@@ -58,7 +58,7 @@ module.exports = {
               return message.channel.send({
                 embeds: [
                   {
-                    color: "#F04A47",
+                    color: "#34eb43",
                     title: "3 Warn",
                     description: "You have set the 3 warn to ban",
                   },
@@ -69,7 +69,7 @@ module.exports = {
               return message.channel.send({
                 embeds: [
                   {
-                    color: "#F04A47",
+                    color: "#34eb43",
                     title: "3 Warn",
                     description: "You have set the 3 warn to nothing",
                   },
