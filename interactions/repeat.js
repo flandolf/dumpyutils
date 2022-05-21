@@ -1,4 +1,3 @@
-const moment = require("moment");
 const { SlashCommandBuilder } = require("@discordjs/builders");
 
 module.exports = {

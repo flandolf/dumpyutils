@@ -71,8 +71,11 @@ module.exports = {
           embeds: [embed],
         });
       }
+      if(x == undefined || x == null) {
+        warns.set(`warns_${message.guild.id}_${target.id}`, 0)
+      }
       warns.add(`warns_${message.guild.id}_${target.id}`, 1);
-      var x = warns.get(`warns_$${target.id}`);
+      var x = warns.get(`warns_${message.guild.id}_${target.id}`);
       var threewarn = warns.get(`${message.guild.id}.3warn`);
       if (threewarn === 0 && x >= 3) {
         target.ban()

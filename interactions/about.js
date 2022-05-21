@@ -11,14 +11,15 @@ module.exports = {
         {
           color: "RANDOM",
           title: "**About This Bot**",
-          description: "The information about this bot!",
-          // thumbnail: {
-          //   url: client.user.displayAvatarURL,
-          // },
+          description: "Info **raymond casually accusing of stealing**",
           fields: [
             {
               name: "Bot Version",
-              value: "idk",
+              value: "6.9",
+            },
+            {
+              name: "Creator",
+              value: "Andy (Dumpy)",
             },
             {
               name: "Bot Since",
@@ -29,20 +30,14 @@ module.exports = {
               value: "https://dumpyy.xyz",
             },
             {
-              name: "Creator",
-              value: "Andy (Dumpy)",
-            },
-            {
               name: "Host",
-              value: "[Oracle Cloud E2 Micro](https://cloud.oracle.com)",
+              value: "[Oracle Cloud ARM: 4 Core 24GB Ram](https://cloud.oracle.com)",
             }, 
-            {
-              name: "Library",
-              value: "[Discord.js](https://discord.js.org/) ",
-            },
+            
           ],
         },
       ],
     ephemeral: false});
   },
+  
 };
