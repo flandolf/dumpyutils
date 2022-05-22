@@ -1,7 +1,7 @@
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 const ascii = require("ascii-table");
-
+require('colors')
 module.exports = async (err, files, client) => {
   if (err) return console.error(err);
 
@@ -16,7 +16,7 @@ module.exports = async (err, files, client) => {
 
   (async () => {
     try {
-      console.log("Refreshing slash command list");
+      console.log("Refreshing slash command list".green);
       const guildIds = await client.guilds.cache.map((guild) => guild.id);
       const clientId = await client.user.id;
       guildIds.forEach(async (guildId) => {
@@ -25,7 +25,7 @@ module.exports = async (err, files, client) => {
         });
       });
 
-      console.log("Successfully refreshed slash command list");
+      console.log("Successfully refreshed slash command list".green);
     } catch (error) {
       console.error(error);
     }

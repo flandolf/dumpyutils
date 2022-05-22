@@ -1,6 +1,7 @@
 const fs = require("fs");
 const dotenv = require("dotenv");
 dotenv.config();
+require('colors')
 const { Client, Intents, Collection } = require("discord.js");
 const client = new Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
@@ -30,7 +31,7 @@ fs.readdir("./events/", (err, files) => {
 });
 
 client.on("ready", () => {
-    console.log(`Logged in as ${client.user.tag}!`);
+    console.log(`Logged in as ${client.user.tag}!`.rainbow);
     client.user.setActivity(`in ${client.guilds.cache.size} servers!`, {
         type: "WATCHING",
     });
