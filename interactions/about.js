@@ -1,43 +1,56 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-
+const moment = require("moment");
+require("moment-duration-format");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("about")
     .setDescription("Shows you the info about the bot!"),
   async execute(interaction) {
-    
+    const { client } = interaction;
+
+    const duration = moment
+      .duration(client.uptime)
+      .format(" D [days], H [hrs], m [mins], s [secs]");
     interaction.reply({
       embeds: [
         {
-          color: "RANDOM",
-          title: "**About This Bot**",
-          description: "Info **raymond casually accusing of stealing**",
+          color: "#00aeff",
+          title: "Bot Information :heart:",
+          description: "Info about the bot",
           fields: [
             {
-              name: "Bot Version",
+              name: "Bot Version:",
               value: "6.9",
             },
             {
-              name: "Creator",
-              value: "Andy (Dumpy)",
+              //uptime
+              name: "Uptime:",
+              value: `${duration}`,
             },
             {
-              name: "Bot Since",
-              value: `<t:${parseInt(interaction.user.createdTimestamp / 1000)}:R>`,
+              name: "Servers the bot is in:",
+              value: client.guilds.cache.size.toString(),
             },
             {
-              name: "Bot Website",
-              value: "https://dumpyy.xyz",
+              name: "Owner:",
+              value: "dumpy#6944",
             },
             {
-              name: "Host",
-              value: "[Oracle Cloud ARM: 4 Core 24GB Ram](https://cloud.oracle.com)",
-            }, 
-            
+              name: "Github:",
+              value: "(https://github.com/dumpydev/dumpyutils)[dumpydev/dumpyutils on github.]",
+            },
+            {
+              name: "License:",
+              value: "GPL-v3",
+
+            },
           ],
+          footer: {
+            text: "Dumpy's Utilities",
+          },
         },
       ],
-    ephemeral: false});
+      ephemeral: false,
+    });
   },
-  
 };

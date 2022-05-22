@@ -62,22 +62,37 @@ module.exports = {
                 ephemeral: true,
             });
         }
-        var x = db.get(`warns_${interaction.guildId}_${member.id}`);
-        db.set(
-            `warns_${interaction.guildId}_${member.id}`,
-            parseInt(x - warns)
-        );
-        if (db.get(`warns_${interaction.guildId}_${member.id}`) < 0) {
-            db.set(`warns_${interaction.guildId}_${member.id}`, 0);
+        try {
+            var x = db.get(`warns_${interaction.guildId}_${member.id}`);
+            db.set(
+                `warns_${interaction.guildId}_${member.id}`,
+                parseInt(x - warns)
+            );
+            if (db.get(`warns_${interaction.guildId}_${member.id}`) < 0) {
+                db.set(`warns_${interaction.guildId}_${member.id}`, 0);
+            }
+            console.log(member);
+            interaction.reply({
+                embeds: [
+                    {
+                        title: "Warns Removed!",
+                        color: "#F04A47",
+                        description: `${member.username}#${member.discriminator} has had ${warns} warn(s) removed.`,
+                    },
+                ],
+            });
+        } catch (err) {
+            console.log(err);
+            interaction.reply({
+                embeds: [
+                    {
+                        title: "An error occured! ⛔",
+                        color: "#F04A47",
+                        description:
+                            "An error occured while trying to remove warns.",
+                    },
+                ],
+            });
         }
-        interaction.reply({
-            embeds: [
-                {
-                    title: "Warns Removed!",
-                    color: "#F04A47",
-                    description: `${member.displayName} has had ${warns} warn(s) removed.`,
-                },
-            ],
-        });
     },
 };

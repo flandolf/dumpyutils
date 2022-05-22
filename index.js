@@ -6,6 +6,20 @@ const { Client, Intents, Collection } = require("discord.js");
 const client = new Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
 });
+let totalSeconds = (client.uptime / 1000);
+let days = Math.floor(totalSeconds / 86400);
+totalSeconds %= 86400;
+let hours = Math.floor(totalSeconds / 3600);
+totalSeconds %= 3600;
+let minutes = Math.floor(totalSeconds / 60);
+let seconds = Math.floor(totalSeconds % 60);
+//write to file
+const writeFile = (file, data) => {
+    fs.writeFile(file, data, (err) => {
+        if (err) throw err;
+        console.log(`${file} has been saved!`.green);
+    });
+};
 
 /*
 Thanks to chewey for API.
@@ -37,3 +51,4 @@ client.on("ready", () => {
     });
 });
 client.login(process.env.TOKEN);
+

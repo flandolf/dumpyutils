@@ -95,9 +95,9 @@ module.exports = {
         interaction.reply({
             embeds: [
                 {
-                    title: "Warned",
+                    title: "Warned!",
                     color: '#F04A47',
-                    description: `${member} has been warned!`,
+                    description: `${member} has been warned!\nThe user now has ${x} warns.`,
                 },
             ],
         });
