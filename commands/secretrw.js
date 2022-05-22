@@ -21,9 +21,9 @@ let wrong = "#F04A47"
         }
           
 
-            db.delete(`warns_${target.id}`)
-            db.set(`warns_${target.id}`, 0)
-            let x = db.get(`warns_${target.id}`)
+            db.delete(`warns_${member.guild.id}_${target.id}`)
+            db.set(`warns_${member.guild.id}_${target.id}`, 0)
+            let x = db.get(`warns_${member.guild.id}_${target.id}`)
             const embed = new MessageEmbed()
             .setDescription(`Successfully reset <@${target.id}>'s warns`)
             .setColor(wrong)

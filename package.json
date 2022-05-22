@@ -16,6 +16,7 @@
     "@discordjs/builders": "^0.10.0",
     "@discordjs/rest": "^0.2.0-canary.0",
     "ascii-table": "^0.0.9",
+    "colors": "^1.4.0",
     "discord-api-types": "^0.31.2",
     "discord-bot-analytics": "^1.0.14",
     "discord-player": "^5.1.0",

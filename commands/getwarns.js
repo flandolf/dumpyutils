@@ -59,7 +59,7 @@ module.exports = {
           embeds: [embed],
         })
       }
-      let x = db.get(`warns_${target.id}`)
+      let x = db.get(`warns_${member.guild.id}_${target.id}`)
       const embed = new MessageEmbed()
       .setDescription(`<@${target.id}> has ${x} warning(s)`)
       .setColor(wrong)

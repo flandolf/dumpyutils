@@ -5,7 +5,7 @@ module.exports = {
     .setName("about")
     .setDescription("Shows you the info about the bot!"),
   async execute(interaction) {
-    const { client } = interaction;
+    
     interaction.reply({
       embeds: [
         {
@@ -23,7 +23,7 @@ module.exports = {
             },
             {
               name: "Bot Since",
-              value: `<t:${parseInt(client.user.createdTimestamp / 1000)}:R>`,
+              value: `<t:${parseInt(interaction.user.createdTimestamp / 1000)}:R>`,
             },
             {
               name: "Bot Website",

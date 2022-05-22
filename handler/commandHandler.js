@@ -1,6 +1,7 @@
 const ascii = require("ascii-table");
 const commandCheck = require("./../utils/commandCheck");
-const table = new ascii().setHeading("command", "Load Status");
+const table = new ascii().setHeading("Command:", "Loaded?");
+require('colors');
 
 module.exports = async (err, files, client) => {
   if (err) return console.error(err);
@@ -19,6 +20,6 @@ module.exports = async (err, files, client) => {
         table.addRow(command.name, "✖");
       }
     }
-    if (index == files.length - 1) console.log(table.toString());
+    if (index == files.length - 1) console.log(table.toString().rainbow);
   });
 };

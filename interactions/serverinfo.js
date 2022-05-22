@@ -1,7 +1,7 @@
 const verificationLevels = {
-    NONE: "None",
-    LOW: "Low",
-    MEDIUM: "Medium",
+    NONE: "None :yawning_face:",
+    LOW: "Low :flushed:",
+    MEDIUM: "Medium :angry:",
     HIGH: "(╯°□°）╯︵ ┻━┻",
     VERY_HIGH: "┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻",
 };
