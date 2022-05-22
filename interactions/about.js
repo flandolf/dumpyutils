@@ -37,7 +37,7 @@ module.exports = {
             },
             {
               name: "Github:",
-              value: "(https://github.com/dumpydev/dumpyutils)[dumpydev/dumpyutils on github.]",
+              value: "https://github.com/dumpydev/dumpyutils",
             },
             {
               name: "License:",
