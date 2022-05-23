@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const db = require("quick.db");
+const warns = new db.table("warns");
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("warn")
@@ -63,12 +64,11 @@ module.exports = {
             });
         }
         if (x == undefined || x == null) {
-            db.set(`warns_${interaction.guildId}_${member.id}`, 0);
+            warns.set(`warns_${interaction.guildId}_${member.id}`, 0);
         }
-        db.add(`warns_${interaction.guildId}_${member.id}`, 1);
-        var x = db.get(`warns_${interaction.guildId}_${member.id}`);
-        var threewarn = db.get(`${interaction.guildId}.3warn`);
-        console.log(x);
+        warns.add(`warns_${interaction.guildId}_${member.id}`, 1);
+        var x = warns.get(`warns_${interaction.guildId}_${member.id}`);
+        var threewarn = warns.get(`${interaction.guildId}.3warn`);
         if (threewarn === 0 && x >= 3) {
             member.ban(`${reason}`);
             return interaction.reply({
