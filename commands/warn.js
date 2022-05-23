@@ -1,5 +1,6 @@
 const { Permissions, MessageEmbed } = require("discord.js");
-const warns = require("quick.db")
+const db = require("quick.db")
+const warns = new db.table("warns")
 
 let wrong = "#F04A47";
 

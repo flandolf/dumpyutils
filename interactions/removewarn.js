@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const db = require("quick.db");
+const warns = new db.table("warns");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -13,7 +14,7 @@ module.exports = {
         )
         .addIntegerOption((option) =>
             option
-                .setName("warns")
+                .setName("amount")
                 .setDescription("The number of the warn(s) you want to remove")
                 .setRequired(false)
         ),
@@ -21,9 +22,8 @@ module.exports = {
     async execute(interaction) {
         // retrieve user
         let member = await interaction.options.getUser("user").fetch(true);
-        let warns =
-            (await interaction.options.getInteger("warns")) ||
-            db.get(`warns_${interaction.guildId}_${member.id}`);
+        let amount = (await interaction.options.getInteger("warns")) ||
+        warns.get(`warns_${interaction.guildId}_${member.id}`);
         if (warns == 0) {
             return interaction.reply({
                 embeds: [
@@ -63,13 +63,13 @@ module.exports = {
             });
         }
         try {
-            var x = db.get(`warns_${interaction.guildId}_${member.id}`);
-            db.set(
+            var x = warns.get(`warns_${interaction.guildId}_${member.id}`);
+            warns.set(
                 `warns_${interaction.guildId}_${member.id}`,
-                parseInt(x - warns)
+                parseInt(x - amount)
             );
-            if (db.get(`warns_${interaction.guildId}_${member.id}`) < 0) {
-                db.set(`warns_${interaction.guildId}_${member.id}`, 0);
+            if (warns.get(`warns_${interaction.guildId}_${member.id}`) < 0) {
+                warns.set(`warns_${interaction.guildId}_${member.id}`, 0);
             }
             console.log(member);
             interaction.reply({
@@ -77,7 +77,7 @@ module.exports = {
                     {
                         title: "Warns Removed!",
                         color: "#F04A47",
-                        description: `${member.username}#${member.discriminator} has had ${warns} warn(s) removed.`,
+                        description: `${member.username}#${member.discriminator} has had ${amount} warn(s) removed.`,
                     },
                 ],
             });
