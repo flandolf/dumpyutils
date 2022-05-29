@@ -1,4 +1,4 @@
-![banner](https://github.com/dumpydev/dumpyutils/blob/main/dumpyutils.png?raw=true)
+![banner](https://github.com/dumpydev/dumpyutils/blob/master/dumpyutils.png?raw=true)
 
 This is a simple bot that does moderation. 
 
