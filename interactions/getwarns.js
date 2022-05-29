@@ -19,6 +19,11 @@ module.exports = {
     async execute(interaction) {
         // retrieve user
         let member = await interaction.options.getUser("user")
+        let id = member.id
+        let list = memberwarns(id) 
+        //split list by _
+        let split = list.split("_")
+        
         if (!member) {
             interaction.reply({
                 embeds: [{
@@ -29,8 +34,8 @@ module.exports = {
         } else {
             interaction.reply({
                 embeds: [{
-                    title: "Warns",
-                    description: memberwarns(member.id).toString(),
+                    title: `Warns for ${member.username}`,
+                    description: memberwarns(id).toString(),
                 }]
             })
         }
