@@ -12,9 +12,9 @@ Thank you to BracketByte for the original command handler (too lazy haha)
 
 ## Self host
 In order to self host the bot, you will need some dependencies
-- NodeJS >=v17    
+- [NodeJS](https://nodejs.org) >=v16    
 - yarn `npm i -g yarn`      
-- git     
+- [git](https://git-scm.com)  
 Now, clone the repository
 ```
 git clone https://github.com/dumpydev/dumpyutils.git
