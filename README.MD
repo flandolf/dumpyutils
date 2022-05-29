@@ -1,4 +1,4 @@
-# Dumpy's Utilities!
+![banner](https://github.com/dumpydev/dumpyutils/blob/main/dumpyutils.png?raw=true)
 
 This is a simple bot that does moderation. 
 
@@ -6,3 +6,7 @@ This is a simple bot that does moderation.
 
 Bot with Moderation Functions!
 Adding more features!
+
+## Credits
+Thank you to BracketByte for the original command handler (too lazy haha)
+~~*Thanks github copilot*~~
