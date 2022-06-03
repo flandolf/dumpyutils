@@ -8,6 +8,7 @@ module.exports = {
     usage: "<user> <reason>",
     aliases: ["none"],
     data: new SlashCommandBuilder()
+        /* Creating a slash command. */
         .setName("getwarns")
         .setDescription("Get warns of a user")
         .addUserOption((option) =>
@@ -16,15 +17,14 @@ module.exports = {
                 .setDescription("The user you want to get warns of")
 
         ),
+    /* The code that is executed when the command is run. */
     async execute(interaction) {
-        // retrieve user
+        /* Getting the user that the user of the slash command wants to get the warns of. */
         let member = await interaction.options.getUser("user")
         let id = member.id
-        let list = memberwarns(id) 
-        //split list by _
-        let split = list.split("_")
-        
         if (!member) {
+            /* Sending an embed with the title "Warns" and the description of the function
+            fetchWarns().map(warn => `${warn.ID} - ${warn.data}`).join("\n") */
             interaction.reply({
                 embeds: [{
                     title: "Warns",
@@ -32,6 +32,8 @@ module.exports = {
                 }]
             })
         } else {
+            /* Sending an embed with the title "Warns for ${member.username}" and the description of
+            the function memberwarns(id).toString() */
             interaction.reply({
                 embeds: [{
                     title: `Warns for ${member.username}`,
@@ -44,6 +46,10 @@ module.exports = {
     },
 
 }
+/**
+ * It returns the warns of a user.
+ * @returns the result of the function warns.all()
+ */
 function fetchWarns() {
     try {
         console.log(warns.all)
@@ -54,6 +60,11 @@ function fetchWarns() {
     
 
 }
+/**
+ * It takes an ID and returns a list of all the warns that have that ID in them.
+ * @param id - The ID of the member you want to get the warns of
+ * @returns - A list of all the warns that have that ID in them
+ */
 
 function memberwarns(id) {
     console.log(id)

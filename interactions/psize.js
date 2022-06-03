@@ -1,3 +1,6 @@
+
+/* Importing the SlashCommandBuilder from the @discordjs/builders package. */
+
 const { SlashCommandBuilder } = require("@discordjs/builders");
 
 module.exports = {
@@ -21,7 +24,7 @@ module.exports = {
                 embeds: [{
                     color: "#00aeff",
                     title: "Your pp size is:",
-                    description: `${pp}`,
+                    description: `${pp}\nwow such ${pplength(pp)}`,
 
                 }]
             })
@@ -39,6 +42,10 @@ module.exports = {
 
     },
 };
+/**
+ * It generates a random string of "=" characters.
+ * @returns A string of 8=s and a D.
+ */
 
 function generatePP() {
     var pp = "8";
@@ -48,6 +55,13 @@ function generatePP() {
     }
     return pp + "D";
 }
+/**
+ * If the length of the string is greater than 9, return "MASSIVE PP!", if the length of the string is
+ * greater than 7, return "BIG PP!", if the length of the string is greater than 5, return "MEDIUM
+ * PP!", if the length of the string is greater than 3, return "SMALL PP!".
+ * @param length - The length of the string you want to check.
+ * @returns the string "MASSIVE PP!"
+ */
 function pplength(length) {
     if (length.length > 9) {
         return "MASSIVE PP!"

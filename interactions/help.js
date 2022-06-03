@@ -36,6 +36,8 @@ module.exports = {
 
     const command = client.interactions.get(string);
 
+    /* It's checking if the command exists. If it doesn't, it will send a message saying that the
+    command doesn't exist. */
     if (!command) {
       const cmdDoesntExist = new Discord.MessageEmbed()
         .setTitle("Command not found!")

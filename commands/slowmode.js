@@ -14,8 +14,10 @@ module.exports = {
     if (args.length < 1) {
       return message.reply({
         embeds: [{
-          color: "red",
-          description: "Please enter a number of seconds"
+          color: "#ff0000",
+          title: 'Error!',
+          description: "Please enter a number of seconds",
+          timestamp: new Date()
         }]
       });
 
@@ -27,22 +29,27 @@ module.exports = {
     }
 
     if (isNaN(duration)) {
-      message.reply(
+      return message.reply(
         {
           embeds: [{
-            color: colors.red,
-            description: "Please enter a number of seconds"
+
+            color: "#ff0000",
+            title: 'Error!',
+            description: "Please enter a number of seconds",
+            timestamp: new Date()
           }]
         }
       )
-      return
     }
     message.channel.setRateLimitPerUser(duration, args.join(' '))
-    message.reply({embeds:[{
-      color: colors.green,
-      description: `Slowmode set to ${duration} seconds`,
-      timestamp: new Date()
-    }]})
+    message.reply({
+      embeds: [{
+        color: "#12cc44",
+        title: 'Success!',
+        description: `Slowmode set to ${duration} seconds`,
+        timestamp: new Date()
+      }]
+    })
   }
 }
 
