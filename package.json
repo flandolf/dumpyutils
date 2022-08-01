@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Moderation BOT",
   "main": "index.js",
+  "type": "commonjs",
   "engines": {
     "node": ">=16"
   },
@@ -13,18 +14,19 @@
   "author": "Dumpy",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/builders": "^0.13.0",
-    "@discordjs/rest": "^0.4.1",
-    "@dumpy/andylib": "^2.1.1",
+    "@discordjs/builders": "^1.1.0",
+    "@discordjs/rest": "^1.0.1",
+    "@dumpy/andylib": "^3.2.0",
     "ascii-table": "^0.0.9",
     "colors": "^1.4.0",
-    "discord-api-types": "^0.33.2",
+    "discord-api-types": "^0.37.0",
     "discord-bot-analytics": "^1.0.14",
-    "discord.js": "^13.7.0",
+    "discord.js": "^14.1.2",
     "dotenv": "^16.0.1",
-    "moment": "^2.29.3",
+    "moment": "^2.29.4",
     "moment-duration-format": "^2.3.2",
     "ms": "^3.0.0-canary.1",
+    "node-fetch": "^3.2.10",
     "quick.db": "^7.0.0"
   }
 }

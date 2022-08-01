@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 const { SlashCommandBuilder } = require("@discordjs/builders");
-
+const {get} = require("@dumpy/andylib");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("covid")
