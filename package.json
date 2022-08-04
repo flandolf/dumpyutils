@@ -5,9 +5,12 @@
   "type": "commonjs",
   "license": "MIT",
   "dependencies": {
+    "ascii-table": "^0.0.9",
     "better-sqlite3": "^7.6.2",
+    "colors": "^1.4.0",
     "discord.js": "^14.1.2",
     "dotenv": "^16.0.1",
+    "moment": "^2.29.4",
     "quick.db": "9"
   }
 }

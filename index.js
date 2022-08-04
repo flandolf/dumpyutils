@@ -3,6 +3,7 @@ const path = require('node:path');
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const { deploy } = require('./deploy');
 require('dotenv').config();
+require('colors')
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 
@@ -29,13 +30,19 @@ client.on('interactionCreate', async interaction => {
         await command.execute(interaction);
     } catch (error) {
         console.error(error);
-        await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+        await interaction.reply({ embeds: [
+            {
+                color: 0xff4816,
+                title: "**Error**",
+                description: "An error occured while executing the command.",
+            }
+        ], ephemeral: true });
     }
 });
 
 
 client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);
+    console.log(`Logged in as ${client.user.tag}!`.rainbow);
     client.user.setPresence({ activities: [{ name: ' fuck this shitty ass djs 14' }], status: 'idle' });
 });
 

@@ -1,11 +1,17 @@
 const { SlashCommandBuilder } = require("discord.js")
 const moment = require('moment')
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("about")
         .setDescription("Shows the information about bot"),
     async execute(interaction) {
+        
         const { client } = interaction;
+        const uptime = (client) => {
+            const time = moment.duration(client.uptime, 'milliseconds')
+            return `${time.hours()} hours, ${time.minutes()} minutes, ${time.seconds()} seconds`   
+        }
         await interaction.reply({
             embeds: [
                 {
@@ -31,7 +37,7 @@ module.exports = {
                         },
                         {
                             name: "Uptime",
-                            value: `${moment.duration(client.uptime).format("D [days], H [hours], m [minutes], s [seconds]")}`,
+                            value: `${uptime(client)}`,
                         }
                       ]
                 },
