@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("discord.js")
-
+const moment = require('moment')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("about")
@@ -31,7 +31,7 @@ module.exports = {
                         },
                         {
                             name: "Uptime",
-                            value: client.uptime,
+                            value: `${moment.duration(client.uptime).format("D [days], H [hours], m [minutes], s [seconds]")}`,
                         }
                       ]
                 },
