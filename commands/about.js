@@ -23,7 +23,7 @@ module.exports = {
                       },
                       fields: [
                         {
-                          name: "Owner",
+                          name: "Creator",
                           value: "[dumpy](https://dumpyy.xyz)",
                         },
                         

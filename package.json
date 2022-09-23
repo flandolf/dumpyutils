@@ -8,9 +8,12 @@
     "ascii-table": "^0.0.9",
     "better-sqlite3": "^7.6.2",
     "colors": "^1.4.0",
-    "discord.js": "^14.1.2",
-    "dotenv": "^16.0.1",
+    "discord.js": "^14.3.0",
+    "dotenv": "^16.0.2",
     "moment": "^2.29.4",
     "quick.db": "9"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.20"
   }
 }
