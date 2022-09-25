@@ -13,7 +13,6 @@ module.exports = {
         const msgs = new QuickDB({ table: `msgs_${user}`, filePath: './db.sqlite' });
         const msg = await msgs.all()
         const fields = [
-
         ]
         msg.forEach((m) => {
             fields.push({
@@ -22,6 +21,25 @@ module.exports = {
                 inline: true,
             })
         })
+        fields.push({
+            name: "Time",
+            value: time,
+            inline: false
+        })
+        if (msg.length === 0) {
+            return await interaction.reply({
+                embeds: [
+                    {
+                        color: 0xff4816,
+                        title: "**No Messages**",
+                        description: `You have no messages in the database!`,
+                        thumbnail: {
+                            url: client.user.displayAvatarURL,
+                        },
+                    },
+                ],
+            });
+        }
         await interaction.reply(
             {
                 embeds: [
@@ -32,7 +50,8 @@ module.exports = {
                         thumbnail: {
                             url: client.user.displayAvatarURL,
                         },
-                        fields: fields
+                        fields: fields,
+
                     },
                 ]
             }
