@@ -42,6 +42,9 @@ client.on('interactionCreate', async interaction => {
     }
 });
 
+client.on('messageCreate', async message => {
+    console.log(message.content)
+})
 // Deploy Function
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord.js');
@@ -60,7 +63,7 @@ async function deploy() {
             for (const subFile of subFiles) {
                 const command = require(`./commands/${file}/${subFile}`);
                 commands.push(command.data.toJSON());
-                table.addRow(`${stat}/${command.data.name}`, 'Deployed')
+                table.addRow(`${command.data.name}`, 'Deployed')
             }
         }
         else {
