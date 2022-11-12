@@ -13,6 +13,11 @@ module.exports = {
         const msgs = new QuickDB({ table: `msgs_${user}`, filePath: './db.sqlite' });
         const msg = await msgs.all()
         const fields = [
+            {
+                name: "Title",
+                value: "Value",
+                inline: true
+            }
         ]
         msg.forEach((m) => {
             fields.push({
