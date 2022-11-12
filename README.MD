@@ -3,7 +3,8 @@
 ![CodeFactor](https://www.codefactor.io/repository/github/dumpydev/dumpyutils/badge)
 ![GitHub issues](https://img.shields.io/github/issues/dumpydev/dumpyutils)
 ![GitHub repo file count](https://img.shields.io/github/directory-file-count/dumpydev/dumpyutils)
-![GitHub package.json version (subfolder of monorepo)](https://img.shields.io/github/package-json/v/dumpydev/dumpyutils?filename=package.json)
+![GitHub package.json version (subfolder of monorepo)](https://img.shields.io/github/package-json/v/dumpydev/dumpyutils?filename=package.json)        
+
 This is a simple bot that does ~~moderation~~. 
 
 ## Info
@@ -13,6 +14,10 @@ It is constantly maintained however right now is going through some maintnance.
 
 ## Credits
 ~~*Thanks github copilot*~~
+
+## Libraries
+[discord.js](https://github.com/discordjs)
+[quick.db](https://github.com/plexidev/quick.db)
 
 ## Self host
 In order to self host the bot, you will need some dependencies
