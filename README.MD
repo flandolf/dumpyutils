@@ -1,5 +1,9 @@
 ![banner](https://github.com/dumpydev/dumpyutils/blob/master/dumpyutils.png?raw=true)
-
+![GitHub top language](https://img.shields.io/github/languages/top/dumpydev/dumpyutils)
+![CodeFactor](https://www.codefactor.io/repository/github/dumpydev/dumpyutils/badge)
+![GitHub issues](https://img.shields.io/github/issues/dumpydev/dumpyutils)
+![GitHub repo file count](https://img.shields.io/github/directory-file-count/dumpydev/dumpyutils)
+![GitHub package.json version (subfolder of monorepo)](https://img.shields.io/github/package-json/v/dumpydev/dumpyutils?filename=package.json)
 This is a simple bot that does ~~moderation~~. 
 
 ## Info
