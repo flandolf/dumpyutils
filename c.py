@@ -14,7 +14,9 @@ with open("package.json", "r") as f:
         nver1 += 1
     else:
         nver3 += 1
-    data["version"] = f"{nver1}.{nver2}.{nver3}"
+    nver = f"{nver1}.{nver2}.{nver3}"
+    data["version"] = nver
+    print('New version:', nver)
     with open("package.json", "w") as w:
         json.dump(data, w, indent=4)
 
