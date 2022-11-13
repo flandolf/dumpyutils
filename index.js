@@ -8,6 +8,8 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const { QuickDB } = require('quick.db');
+const db = new QuickDB({ table: `cmdserved`, filePath: './db.sqlite' });
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 require('colors')
 require('dotenv').config();
@@ -20,11 +22,13 @@ for (const file of commandFiles) {
     const command = require(filePath);
     client.commands.set(command.data.name, command);
 }
-client.on('interactionCreate', async interaction => {
+client.on('interactionCreate', async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
     const command = client.commands.get(interaction.commandName);
 
     if (!command) return;
+
+    await db.add(`served_${interaction.commandName}`, 1);
 
     try {
         await command.execute(interaction);
@@ -42,11 +46,9 @@ client.on('interactionCreate', async interaction => {
     }
 });
 
-client.on('messageCreate', async message => {
+client.on('messageCreate', async (message) => {
     console.log(message.content)
 })
-
-
 
 // Ready Event
 client.on('ready', () => {

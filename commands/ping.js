@@ -10,8 +10,8 @@ module.exports = {
             embeds: [
                 {
                     color: 0xff4816,
-                    title: "**lagOmeter**",
-                    description: "API/BOT ping",
+                    title: "**bot ping again....**",
+                    description: "BRO WHY TF DO YOU CAREEEE",
                     thumbnail: {
                         url: client.user.displayAvatarURL,
                     },
