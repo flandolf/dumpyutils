@@ -22,6 +22,11 @@ for (const file of commandFiles) {
     const command = require(filePath);
     client.commands.set(command.data.name, command);
 }
+
+client.on('messageCreate', async (message) => {
+    console.log(message.content)
+})
+
 client.on('interactionCreate', async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
     const command = client.commands.get(interaction.commandName);
@@ -46,9 +51,7 @@ client.on('interactionCreate', async (interaction) => {
     }
 });
 
-client.on('messageCreate', async (message) => {
-    console.log(message.content)
-})
+
 
 // Ready Event
 client.on('ready', () => {
