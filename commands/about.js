@@ -3,7 +3,10 @@ const moment = require('moment')
 const { QuickDB } = require('quick.db');
 const axios = require('axios');
 const db = new QuickDB({ table: `cmdserved`, filePath: './db.sqlite' });
-
+const fs = require('fs');
+function getVer() {
+    return require('../package.json').version
+}
 async function getMsgServed() {
     const msg = await db.all()
     let total = 0
@@ -53,6 +56,10 @@ module.exports = {
                         {
                             name: "Library",
                             value: "[Discord.js v14](https://discord.js.org/#/)",
+                        },
+                        {
+                            name: "Version",
+                            value: `${getVer()}`,
                         },
                         {
                             name: "Servers",

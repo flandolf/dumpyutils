@@ -26,6 +26,7 @@ module.exports = {
                 {
                     color: 0x4281f5,
                     title: "**Github Stats :octopus:**",
+                    description: "[github link](https://github.com/dumpydev/dumpyutils)",
                     thumbnail: {
                         url: client.user.displayAvatarURL,
                     },

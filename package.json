@@ -1,21 +1,22 @@
 {
-  "name": "dumpyutils2",
-  "version": "4.0.0",
-  "main": "index.js",
-  "type": "commonjs",
-  "license": "MIT",
-  "dependencies": {
-    "@octokit/core": "^4.0.5",
-    "ascii-table": "^0.0.9",
-    "axios": "^0.27.2",
-    "better-sqlite3": "^7.6.2",
-    "colors": "^1.4.0",
-    "discord.js": "^14.3.0",
-    "dotenv": "^16.0.2",
-    "moment": "^2.29.4",
-    "quick.db": "9"
-  },
-  "devDependencies": {
-    "nodemon": "2.0.20"
-  }
+    "name": "dumpyutils2",
+    "version": "10.1.4",
+    "main": "index.js",
+    "type": "commonjs",
+    "license": "MIT",
+    "dependencies": {
+        "@octokit/core": "^4.0.5",
+        "ascii-table": "^0.0.9",
+        "axios": "^0.27.2",
+        "better-sqlite3": "^7.6.2",
+        "colors": "^1.4.0",
+        "commander": "^9.4.1",
+        "discord.js": "^14.3.0",
+        "dotenv": "^16.0.2",
+        "moment": "^2.29.4",
+        "quick.db": "9"
+    },
+    "devDependencies": {
+        "nodemon": "2.0.20"
+    }
 }
