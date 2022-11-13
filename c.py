@@ -3,13 +3,18 @@ msg = input("Enter commit message: ")
 # update package.json
 with open("package.json", "r") as f:
     data = json.load(f)
-    nver = int(str(data['version']).split('.')[2]) + 1
-    if nver > 9:
-        nver = 0
-        mver = int(str(data['version']).split('.')[1]) + 1
-        data['version'] = str(data['version']).split('.')[0] + "." + str(mver) + "." + str(nver)
+    nver1 = int(data["version"].split(".")[0])
+    nver2 = int(data["version"].split(".")[1])
+    nver3 = int(data["version"].split(".")[2])
+    if nver3 > 9:
+        nver3 = 0
+        nver2 += 1
+    elif nver2 > 9:
+        nver2 = 0
+        nver1 += 1
     else:
-        data['version'] = str(data['version']).split('.')[0] + "." + str(data['version']).split('.')[1] + "." + str(nver)
+        nver3 += 1
+    data["version"] = f"{nver1}.{nver2}.{nver3}"
     with open("package.json", "w") as w:
         json.dump(data, w, indent=4)
 
