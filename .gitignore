@@ -4,3 +4,4 @@ package-lock.json
 init.js
 # dependencies
 node_modules/
+db.sqlite

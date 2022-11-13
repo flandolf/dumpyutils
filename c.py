@@ -12,5 +12,5 @@ with open("package.json", "r") as f:
 
 import os
 os.system("git add .")
-os.system("git commit -m " + msg)
+os.system("git commit -m " + r"\"" + msg + r"\"")
 os.system("git push")
