@@ -1,9 +1,13 @@
 const { SlashCommandBuilder } = require("discord.js");
+// paste this where you defined SlashCommandBuilder
+const { PermissionFlagsBits } = require("discord-api-types/v10");
+
 module.exports = {
     data:
         new SlashCommandBuilder()
             .setName("ban")
             .setDescription("Ban a user from the server")
+            .setDefaultMemberPermissions([PermissionFlagsBits.BanMembers])
             .addUserOption(option => option.setName("user").setDescription("The user to ban").setRequired(true))
             .addStringOption(option => option.setName("reason").setDescription("The reason for the ban").setRequired(false)),
     async execute(interaction) {
