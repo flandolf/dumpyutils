@@ -8,7 +8,7 @@ module.exports = {
     async execute(interaction) {
         const { client } = interaction;
         let number = interaction.options.getInteger("number")
-        if(number == null) { number = 6 }
+        if (number == null) { number = 6 }
         const dice = Math.floor(Math.random() * number) + 1
         await interaction.reply({
             embeds: [

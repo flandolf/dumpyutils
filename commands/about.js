@@ -3,7 +3,7 @@ const moment = require('moment')
 const { QuickDB } = require('quick.db');
 const axios = require('axios');
 const db = new QuickDB({ table: `cmdserved`, filePath: './db.sqlite' });
-const fs = require('fs');
+
 function getVer() {
     return require('../package.json').version
 }

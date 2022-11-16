@@ -23,14 +23,19 @@ for (const file of commandFiles) {
     client.commands.set(command.data.name, command);
 }
 
-client.on('messageCreate', async (message) => {
-    console.log(message.content)
+
+//log whenever a user sends a message
+client.on('messageCreate', async message => {
+    if (message.author.bot) return; 
+    const { author, guild } = message;
+    console.log(`${author.username} sent a message in ${guild.name}`.green)
 })
+
 
 client.on('interactionCreate', async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
     const command = client.commands.get(interaction.commandName);
-
+    
     if (!command) return;
 
     await db.add(`served_${interaction.commandName}`, 1);
@@ -51,14 +56,9 @@ client.on('interactionCreate', async (interaction) => {
     }
 });
 
-
-
 // Ready Event
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`.rainbow);
     client.user.setPresence({ activities: [{ name: ' with some peanut butter.' }], status: 'idle' });
 });
-
-
-
 client.login(process.env.TOKEN);

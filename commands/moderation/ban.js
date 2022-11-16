@@ -10,6 +10,20 @@ module.exports = {
         const { client } = interaction;
         const user = interaction.options.getUser("user");
         const reason = interaction.options.getString("reason");
+
+        if (!interaction.member.permissions.has("BAN_MEMBERS")) {
+            return await interaction.reply({
+                embeds: [
+                    {
+                        color: 0xff4816,
+                        title: "**Error!**",
+                        description: `You do not have permission to ban members!`,
+                    }
+                ]
+            })
+        }
+
+        await interaction.guild.members.ban(user, { reason: reason });
         await interaction.reply({
             embeds: [
                 {
