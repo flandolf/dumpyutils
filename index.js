@@ -11,6 +11,8 @@ const path = require('node:path');
 const { QuickDB } = require('quick.db');
 const db = new QuickDB({ table: `cmdserved`, filePath: './db.sqlite' });
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
+const al = require("@dumpy/andylib");
+const l = new al.logger();
 require('colors')
 require('dotenv').config();
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -37,7 +39,7 @@ client.on('interactionCreate', async (interaction) => {
     const command = client.commands.get(interaction.commandName);
     
     if (!command) return;
-
+    l.info(`Command ${interaction.commandName} was executed by ${interaction.user.username} in ${interaction.guild.name}`)
     await db.add(`served_${interaction.commandName}`, 1);
 
     try {
@@ -58,7 +60,7 @@ client.on('interactionCreate', async (interaction) => {
 
 // Ready Event
 client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`.rainbow);
-    client.user.setPresence({ activities: [{ name: ' with some peanut butter.' }], status: 'idle' });
+    l.info(`Logged in as ${client.user.tag}!`.rainbow);
+    client.user.setPresence({ activities: [{ name: ' with some peanut butter.' }], status: 'online' });
 });
 client.login(process.env.TOKEN);

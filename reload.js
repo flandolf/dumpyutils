@@ -10,7 +10,7 @@ for (const file of commandFiles) {
     //scan for subdirectories
     const stat = fs.lstatSync(`./commands/${file}`);
     if (stat.isDirectory()) {
-        const subFiles = fs.readdirSync(`./commands/${file}`);
+        const subFiles = fs.readdirSync(`./commands/${file}`)
         for (const subFile of subFiles) {
             const command = require(`./commands/${file}/${subFile}`);
             commands.push(command.data.toJSON());
@@ -20,6 +20,7 @@ for (const file of commandFiles) {
         const command = require(`./commands/${file}`);
         commands.push(command.data.toJSON());
     }
+
 }
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 
