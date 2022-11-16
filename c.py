@@ -20,7 +20,7 @@ with open("package.json", "r") as f:
     with open("package.json", "w") as w:
         json.dump(data, w, indent=4)
 
-import os
-os.system("git add .")
-os.system("git commit -m " + "\"" + msg + "\"")
-os.system("git push")
+import subprocess
+subprocess.call(["git", "add", "."])
+subprocess.call(["git", "commit", "-m", msg])
+subprocess.call(["git", "push"])
