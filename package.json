@@ -1,6 +1,6 @@
 {
     "name": "dumpyutils2",
-    "version": "10.3.1",
+    "version": "10.3.2",
     "main": "index.js",
     "type": "commonjs",
     "license": "MIT",

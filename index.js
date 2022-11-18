@@ -35,6 +35,16 @@ client.on('messageCreate', async message => {
 
 
 client.on('interactionCreate', async (interaction) => {
+    // check if the interaction is in a dm
+    if (!interaction.guild) return interaction.reply({
+        embeds: [
+            {
+                color: 0xff0000,
+                title: 'Error',
+                description: 'This bot cannot be used in a DM.',
+            }
+        ]
+    });
     if (!interaction.isChatInputCommand()) return;
     const command = client.commands.get(interaction.commandName);
     
