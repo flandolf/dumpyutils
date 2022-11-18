@@ -64,7 +64,7 @@ module.exports = {
                         embeds: [
                             {
                                 color: 0xff4816,
-                                title: "**3 Warn - Banned**" + ":skull: ".repeat(5),
+                                title: "**3 Warn - Banned** " + ":skull: ".repeat(5),
                                 description: `Banned <@${user.id}> from the server! lmao rip :skull:`,
                                 fields: [
                                     {
@@ -82,7 +82,7 @@ module.exports = {
                         embeds: [
                             {
                                 color: 0xff4816,
-                                title: "**3 Warn - Muted**" + ":skull: ".repeat(5),
+                                title: "**3 Warn - Muted** " + ":skull: ".repeat(5),
                                 description: `You have been muted for 3 days for breaking the rules.`
                             }
                         ]
@@ -99,7 +99,7 @@ module.exports = {
                         embeds: [
                             {
                                 color: 0xff4816,
-                                title: "**3 Warn - Muted**" + ":skull: ".repeat(5),
+                                title: "**3 Warn - Muted** " + ":skull: ".repeat(5),
                                 description: `Muted <@${user.id}> from the server! lmao rip :skull:`,
                                 fields: [
                                     {
@@ -117,7 +117,7 @@ module.exports = {
                         embeds: [
                             {
                                 color: 0xff4816,
-                                title: "**3 Warn - Muted**" + ":skull: ".repeat(5),
+                                title: "**3 Warn - Muted** " + ":skull: ".repeat(5),
                                 description: `You have been muted for 7 days for breaking the rules.`
                             }
                         ]
@@ -128,7 +128,7 @@ module.exports = {
                         embeds: [
                             {
                                 color: 0xff4816,
-                                title: "**Member warned!**",
+                                title: "**Member warned!** ",
                                 description: `Warned ${user.tag} for ${reason}! They now have ${warns.length + 1} warns!`,
                                 thumbnail: {
                                     url: client.user.displayAvatarURL,
