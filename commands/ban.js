@@ -32,8 +32,8 @@ module.exports = {
             embeds: [
                 {
                     color: 0xff4816,
-                    title: "**Banned**",
-                    description: `Banned ${user.tag} from the server!`,
+                    title: "**Banned**" + ":skull: ".repeat(5),
+                    description: `Banned <@${user.id}> from the server! lmao rip :skull:`,
                     fields: [
                         {
                             name: "Reason",

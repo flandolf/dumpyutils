@@ -43,7 +43,7 @@ client.on('interactionCreate', async (interaction) => {
     await db.add(`served_${interaction.commandName}`, 1);
 
     try {
-        await command.execute(interaction);
+        await command.execute(interaction); 
     } catch (error) {
         console.error(error);
         await interaction.reply({
