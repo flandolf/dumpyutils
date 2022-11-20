@@ -6,10 +6,14 @@
 ![GitHub package.json version (subfolder of monorepo)](https://img.shields.io/github/package-json/v/dumpydev/dumpyutils?filename=package.json)        
 ## Info
 Dumpy's Utilities is a simple and fun bot to use. It has many features with ~~moderation~~ and some fun commands aswell!
-It is constantly maintained however right now is going through some maintnance.
+
+## Features
+- Moderation [Kick, Ban, Mute, Warn]
+- Fun [8 ball, Coinflip, Dice, Say]
 
 ## Credits
-~~*Thanks github copilot*~~
+- ~~*Thanks github copilot*~~
+- [Raymond](https://github.com/raymond-1227)
 
 ## Libraries
 [discord.js](https://github.com/discordjs)
@@ -32,6 +36,9 @@ If you want to self host this bot 24/7 on a VPS I suggest to use `pm2`.
 npm i -g pm2
 pm2 start index.js
 ```
+
+## Hosting
+Hosted on [OCI](https://www.oracle.com/cloud/free) on ubuntu 22.04.1 LTS.
 
 ## Contribute
 Contributions are always welcome!
