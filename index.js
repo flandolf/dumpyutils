@@ -56,15 +56,30 @@ client.on('interactionCreate', async (interaction) => {
         await command.execute(interaction); 
     } catch (error) {
         console.error(error);
-        await interaction.reply({
-            embeds: [
-                {
-                    color: 0xff4816,
-                    title: "**Error**",
-                    description: "An error occured while executing the command.",
-                }
-            ], ephemeral: true
-        });
+        // check who sent it
+        if (interaction.user.id == '449878966027943936') {
+            await interaction.reply({
+                embeds:[{
+                    color: 0xff0000,
+                    title: 'Error',
+                    description: 'An error occured while executing this command. Please contact the bot developer.',
+                    fields: [
+                        {
+                            name: 'Error',
+                            value: "```" + error + "```"
+                        }
+                    ]
+                }]
+            })
+        } else {
+            await interaction.reply({
+                embeds:[{
+                    color: 0xff0000,
+                    title: 'Error',
+                    description: 'An error occured while executing this command. Please contact the bot developer.',
+                }]
+            })
+        }
     }
 });
 
