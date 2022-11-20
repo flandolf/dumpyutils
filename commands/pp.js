@@ -13,7 +13,12 @@ module.exports = {
                 {
                     color: 0xff4816,
                     title: "**PP size**",
-                    description: `8${"=".repeat(random(1, 20))}D`,
+                    description: "PP size machine!",
+                    fields: [
+                        {
+                            name: `8${"=".repeat(random(1, 20))}D`, 
+                        }
+                    ]
                 }
             ]
         })

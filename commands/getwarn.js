@@ -39,7 +39,7 @@ module.exports = {
         return interaction.reply({
             embeds: [{
                 color: 0xff4816,
-                title: warns == 1 ? `** ${user.tag} has ${warns.length} warn!**` : `** ${user.tag} has ${warns.length} warns!**`,
+                title: warns == 1 ? `**${user.tag} has 1 warn!**` : `**${user.tag} has ${warns.length} warns!**`,
                 description: `Warns for ${user.tag}!`,
                 fields: fields,
 
