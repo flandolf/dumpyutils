@@ -30,9 +30,21 @@ module.exports = {
         await interaction.reply({
             embeds: [
                 {
-                    color: 0xff4816,
+                    color: 0x426cf5,
                     title: "**Poll**",
                     description: question,
+                    fields: [
+                        {
+                            name: "Votes for yes: ",
+                            value: 0,
+                            inline: true
+                        },
+                        {
+                            name: "Votes for no: ",
+                            value: 0,
+                            inline: true
+                        }
+                    ],
                 }
 
             ],
@@ -44,75 +56,114 @@ module.exports = {
         const collector = interaction.channel.createMessageComponentCollector({ filter, time: time * 1000 });
         var yes = 0;
         var no = 0;
-        let voted = []
+        let votedyes = []
+        let votedno = []
         collector.on('collect', async i => {
-            if (voted.includes(i.user.id)) {
-                await i.reply({
-                    embeds: [
-                        {
-                            color: 0xff4816,
-                            title: "**Error**",
-                            description: "You have already voted!",
-                        }
-                    ], ephemeral: true
-                });
-            } else {
-                voted.push(i.user.id)
-            }
             if (i.customId === 'poll_yes') {
-                yes++;
-                i.reply({
-                    content: "You voted yes!",
-                    ephemeral: true
-                })
+                if (votedyes.includes(i.user.id)) {
+                    await i.reply({ content: 'You already voted yes!', ephemeral: true })
+                }
+                if (votedno.includes(i.user.id) && !votedyes.includes(i.user.id)) {
+                    // switch vote
+                    votedno.splice(votedno.indexOf(i.user.id), 1)
+                    votedyes.push(i.user.id)
+                    yes++
+                    no--
+                    i.reply({ content: 'Switched vote to yes!', ephemeral: true })
+                } else if (!votedyes.includes(i.user.id) && !votedno.includes(i.user.id)) {
+                    votedyes.push(i.user.id)
+                    yes++
+                    i.reply({ content: 'Voted yes!', ephemeral: true })
+                }
             } else if (i.customId === 'poll_no') {
-                no++;
-                i.reply({
-                    content: "You voted no!",
-                    ephemeral: true
-                })
+                if (votedno.includes(i.user.id)) {
+                    await i.reply({ content: 'You already voted no!', ephemeral: true })
+                }
+                if (!votedno.includes(i.user.id) && votedyes.includes(i.user.id)) {
+                    // switch vote
+                    votedyes.splice(votedyes.indexOf(i.user.id), 1)
+                    votedno.push(i.user.id)
+                    yes--
+                    no++
+                    i.reply({ content: 'Switched vote to no!', ephemeral: true })
+                } else if (!votedno.includes(i.user.id) && !votedyes.includes(i.user.id)) {
+                    votedno.push(i.user.id)
+                    no++
+                    i.reply({ content: 'Voted no!', ephemeral: true })
+                }
             }
             interaction.editReply({
+                embeds: [
+                    {
+                        color: 0x426cf5,
+                        title: "**Poll**",
+                        description: question,
+                        fields: [
+                            {
+                                name: "Votes for yes: ",
+                                value: yes,
+                                inline: true
+                            },
+                            {
+                                name: "Votes for no: ",
+                                value: no,
+                                inline: true
+                            }
+                        ],
+                    }
+                ]
+            })
+
+        })
+
+        // constantly update poll 
+        await setInterval(async () => {
+            interaction.editReply({
+                embeds: [
+                    {
+                        color: 0x426cf5,
+                        title: "**Poll**",
+                        description: question,
+                        fields: [
+                            {
+                                name: "Votes for yes: ",
+                                value: yes,
+                                inline: true
+                            },
+                            {
+                                name: "Votes for no: ",
+                                value: no,
+                                inline: true
+                            }
+                        ],
+                        footer: {
+                            text: `Poll ends in ${moment(moment.duration(time * 1000 - collector.collected.size * 1000)).format('h [hours], m [minutes], s [seconds]')}`
+                        }
+                    }
+                ]
+            })
+        }, 100)
+        collector.on('end', async collected => {
+            // end poll
+            await interaction.editReply({
                 embeds: [{
-                    color: 0xff4816,
-                    title: "**Poll**",
-                    description: question,
+                    color: 0x426cf5,
+                    title: "**Poll Results!**",
+                    description: `The results for **"${question}"** are in!`,
                     fields: [
                         {
-                            name: "Yes",
+                            name: "Votes for yes: ",
                             value: yes,
                             inline: true
                         },
                         {
-                            name: "No",
+                            name: "Votes for no: ",
                             value: no,
                             inline: true
-                        }],
-                }]
+                        },]
+                }],
+                components: []
             })
-        })
-
-        // wait for time
-        await new Promise(r => setTimeout(r, time * 1000));
-
-        // end poll
-        await interaction.editReply({
-            embeds: [{
-                color: 0xff4816,
-                title: "**Poll Results!**",
-                description: `The results for **${question}** are in!`,
-                fields: [
-                    {
-                        name: "Yes",
-                        value: yes,
-                        inline: true
-                    },
-                    {
-                        name: "No",
-                        value: no,
-                        inline: true
-                    },]
-            }],
         })
     },
 }
