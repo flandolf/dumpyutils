@@ -1,7 +1,7 @@
 yarn.lock
 package-lock.json
 .env
-init.js
 # dependencies
 node_modules/
+# database
 db.sqlite
