@@ -38,7 +38,7 @@ module.exports = {
         {
           color: 0xff4816,
           title: "**User Muted**",
-          description: `<@${user.id}> has been muted for ${duration} minutes.`,
+          description: `<@${user.id}> has been muted for ${duration} minutes.\nReason: ${reason}`,
           thumbnail: {
             url: client.user.displayAvatarURL,
           },
