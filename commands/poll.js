@@ -24,11 +24,16 @@ module.exports = {
   async execute(interaction) {
     const question = interaction.options.getString("question");
     const time = interaction.options.getInteger("time");
-    const btns = new ActionRowBuilder().addComponents(
-      new ButtonBuilder().setCustomId("poll_yes").setLabel("Yes").setStyle(3),
-      new ButtonBuilder().setCustomId("poll_no").setLabel("No").setStyle(4)
+    let btns = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
+        .setCustomId("poll-yes")
+        .setLabel("Yes")
+        .setStyle(ButtonStyle.SUCCESS),
+      new ButtonBuilder()
+        .setCustomId("poll-no")
+        .setLabel("No")
+        .setStyle(ButtonStyle.DANGER)
     );
-
     // create poll
     await interaction.reply({
       embeds: [
