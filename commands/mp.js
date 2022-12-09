@@ -38,6 +38,20 @@ module.exports = {
     // assign a random emoji to each option
     const emojis = ["😊", "😂", "😍", "😘", "😎", "😡", "😱", "🤔", "🤣"];
 
+    if (optionsArray.length > emojis.length) {
+      return await interaction.reply({
+        embeds: [
+          {
+            color: 0xff4816,
+            title: "**Error**",
+            description: "Too many options! Please try again.",
+            footer: {
+              text: `Requested by ${interaction.user.tag}`,
+            },
+          },
+        ],
+      });
+    }
     let optionemoji = [];
     for (let i = 0; i < optionsArray.length; i++) {
       optionemoji.push({
@@ -47,7 +61,7 @@ module.exports = {
       });
     }
 
-    await interaction.reply({
+    const message = await interaction.reply({
       embeds: [
         {
           color: 0x426cf5,
@@ -62,10 +76,11 @@ module.exports = {
           }),
         },
       ],
+      fetchReply: true,
     });
     // assign reactions
     for (let i = 0; i < optionemoji.length; i++) {
-      await interaction.message.react(optionemoji[i].emoji);
+      await message.react(optionemoji[i].emoji);
     }
     // wait for reactions
     const filter = (reaction, user) => {
@@ -74,11 +89,11 @@ module.exports = {
         !user.bot
       );
     };
-    const collector = interaction.message.createReactionCollector({
-      filter,
+    const collector = message.createReactionCollector(filter, {
       time: time * 1000,
     });
     collector.on("collect", (reaction, user) => {
+      console.log(reaction.emoji.name);
       const option = optionemoji.find(
         (option) => option.emoji === reaction.emoji.name
       );
