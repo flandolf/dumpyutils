@@ -1,9 +1,9 @@
 /*
  * Name: DumpysUtils
- * Version: 2.0.0
+ * Version: 10.4.4
  * License: MIT
  * Author: Andy
- * Last Updated: 20/09/2022
+ * Last Updated: 11/01/2022
  */
 
 const fs = require("node:fs");
@@ -15,6 +15,9 @@ const al = require("@dumpy/andylib");
 const l = new al.logger();
 require("colors");
 require("dotenv").config();
+
+
+// Load Commands
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, "commands");
@@ -27,7 +30,7 @@ for (const file of commandFiles) {
   client.commands.set(command.data.name, command);
 }
 
-//log whenever a user sends a message
+// Log whenever a user sends a message
 client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
   const { author, guild } = message;
@@ -35,7 +38,7 @@ client.on("messageCreate", async (message) => {
 });
 
 client.on("interactionCreate", async (interaction) => {
-  // check if the interaction is in a dm
+  // Check if the interaction is in a dm
   if (!interaction.guild)
     return interaction.reply({
       embeds: [
@@ -59,7 +62,7 @@ client.on("interactionCreate", async (interaction) => {
     await command.execute(interaction);
   } catch (error) {
     console.error(error);
-    // check who sent it
+    // Check who sent it
     if (interaction.user.id == "449878966027943936") {
       await interaction.reply({
         embeds: [
@@ -67,7 +70,7 @@ client.on("interactionCreate", async (interaction) => {
             color: 0xff0000,
             title: "Error",
             description:
-              "An error occured while executing this command. Please contact the bot developer.",
+              "An error occured while executing this command.",
             fields: [
               {
                 name: "Error",
@@ -96,7 +99,7 @@ client.on("interactionCreate", async (interaction) => {
 client.on("ready", () => {
   l.info(`Logged in as ${client.user.tag}!`.rainbow);
   client.user.setPresence({
-    activities: [{ name: " with some peanut butter." }],
+    activities: [{ name: " nothing." }],
     status: "online",
   });
 });
