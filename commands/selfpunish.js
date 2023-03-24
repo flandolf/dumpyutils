@@ -47,7 +47,7 @@ module.exports = {
         return days * 24 * 60 * 60 * 1000;
       }
       let member = await interaction.guild.members.fetch(user.id);
-      member.timeout(d2ms(3), "bro u literally wanted to get muted :P");
+      member.timeout(d2ms(1), "bro u literally wanted to get muted :P");
       user.send({
         embeds: [
           {
