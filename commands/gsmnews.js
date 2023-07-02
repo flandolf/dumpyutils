@@ -1,10 +1,8 @@
+const puppeteer = require("puppeteer");
+
 async function fetchGSM() {
-  // import puppeteer
-  // import puppeteer
-  const puppeteer = require("puppeteer");
-  // scrape https://www.gsmarena.com/news.php3
   // launch puppeteer
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ headless: "new" });
   const page = await browser.newPage();
   await page.goto("https://www.gsmarena.com/news.php3");
   // get all the news titles
@@ -16,14 +14,6 @@ async function fetchGSM() {
     });
     return titles;
   });
-  const bodys = await page.evaluate(() => {
-    const news = document.querySelectorAll(".news-item");
-    const bodys = [];
-    news.forEach((item) => {
-      bodys.push(item.querySelector("p").innerText);
-    });
-    return bodys;
-  });
   const links = await page.evaluate(() => {
     const news = document.querySelectorAll(".news-item");
     const links = [];
@@ -32,15 +22,14 @@ async function fetchGSM() {
     });
     return links;
   });
-  await browser.close();
-  let fields = [];
-  for (let i = 0; i < titles.length; i++) {
-    fields.push({
-      name: titles[i],
-      value: `[Read more](${links[i]})`,
-    });
-  }
-  return fields;
+  console.log(titles);
+  console.log(links);
+  return links.slice(0, 5).map((link, index) => {
+    return {
+      name: titles[index],
+      value: `[Read more](${link})`,
+    };
+  });
 }
 
 const { SlashCommandBuilder } = require("discord.js");

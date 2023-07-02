@@ -16,7 +16,6 @@ const l = new al.logger();
 require("colors");
 require("dotenv").config();
 
-
 // Load Commands
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
@@ -69,8 +68,7 @@ client.on("interactionCreate", async (interaction) => {
           {
             color: 0xff0000,
             title: "Error",
-            description:
-              "An error occured while executing this command.",
+            description: "An error occured while executing this command.",
             fields: [
               {
                 name: "Error",
